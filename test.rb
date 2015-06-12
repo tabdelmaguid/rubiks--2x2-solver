@@ -1,21 +1,3 @@
-# description = up, forward, down, back, right, left
-# rotations, counter clockwise, from the top = 0, 1, 2, 3
-# all blocks start from up, 0 position.
-# positions are (0, 0, 0) -> (1, 1, 1)
-
-#movements: right side front
-#           forward side right
-#           bottom side counter clockwise
-
-# for each movement
-#   move
-#   test end position
-#   test repeated pattern
-
-# right side front:
-  # up -> f, f->d, d->b, b->u, right, and left the same
-#
-# use directions of up, and left
 
 require 'Set'
 
@@ -288,8 +270,13 @@ p1 = p.fsr.fsr.fsr
 #find_solution p.rsf.rsf.fsr
 #state = [[Dir::U, Dir::L], [Dir::U, Dir::L], [Dir::U, Dir::L], [Dir::U, Dir::L],
 #         [Dir::U, Dir::L], [Dir::U, Dir::L], [Dir::B, Dir::D], [Dir::B, Dir::U]]
+#state = [[Dir::U, Dir::L], [Dir::U, Dir::L], [Dir::U, Dir::L], [Dir::U, Dir::L],
+#         [Dir::R, Dir::U], [Dir::L, Dir::D], [Dir::U, Dir::L], [Dir::U, Dir::L]]
+# --> Last move: RSF RSF  BSCC  RSF  FSR  BSCC  RSF  FSR  BSCC  FSR  BSCC  FSR  BSCC  BSCC  FSR
+
 state = [[Dir::U, Dir::L], [Dir::U, Dir::L], [Dir::U, Dir::L], [Dir::U, Dir::L],
-         [Dir::R, Dir::U], [Dir::L, Dir::D], [Dir::U, Dir::L], [Dir::U, Dir::L]]
+         [Dir::U, Dir::L], [Dir::L, Dir::U], [Dir::U, Dir::L], [Dir::L, Dir::U]]
+# --> Last move: BSCC FSR  FSR  BSCC  RSF  BSCC  FSR  RSF  BSCC  RSF  FSR  FSR  RSF
 
 cubes = state.map { |pair| Cube.new pair[0], pair[1]}
 find_solution Position.new cubes

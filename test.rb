@@ -274,9 +274,12 @@ p1 = p.fsr.fsr.fsr
 #         [Dir::R, Dir::U], [Dir::L, Dir::D], [Dir::U, Dir::L], [Dir::U, Dir::L]]
 # --> Last move: RSF RSF  BSCC  RSF  FSR  BSCC  RSF  FSR  BSCC  FSR  BSCC  FSR  BSCC  BSCC  FSR
 
-state = [[Dir::U, Dir::L], [Dir::U, Dir::L], [Dir::U, Dir::L], [Dir::U, Dir::L],
-         [Dir::U, Dir::L], [Dir::L, Dir::U], [Dir::U, Dir::L], [Dir::L, Dir::U]]
+#state = [[Dir::U, Dir::L], [Dir::U, Dir::L], [Dir::U, Dir::L], [Dir::U, Dir::L],
+#         [Dir::U, Dir::L], [Dir::L, Dir::U], [Dir::U, Dir::L], [Dir::L, Dir::U]]
 # --> Last move: BSCC FSR  FSR  BSCC  RSF  BSCC  FSR  RSF  BSCC  RSF  FSR  FSR  RSF
+state = [[Dir::U, Dir::L], [Dir::U, Dir::L], [Dir::U, Dir::L], [Dir::U, Dir::L],
+         [Dir::U, Dir::L], [Dir::U, Dir::R], [Dir::B, Dir::U], [Dir::B, Dir::U]]
+# --> Last move: BSCC RSF  FSR  FSR  FSR  BSCC  FSR  BSCC  BSCC  BSCC  RSF  RSF  RSF
 
 cubes = state.map { |pair| Cube.new pair[0], pair[1]}
 find_solution Position.new cubes

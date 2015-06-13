@@ -1,0 +1,8 @@
+Standard colors:
+
+Top: White
+Front: Green
+Down/Bottom: Yellow
+Back: Blue
+Right: Orange
+Left: Red
